@@ -16,6 +16,12 @@ app.get('/', function(req, res)
   res.render('app')
 });
 
+// app.get('/navbar', function(req, res) 
+// {
+//   res.render('partials/navbar')
+// });
+app.set('layout', 'layout');
+
 //middlewares
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
