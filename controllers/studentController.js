@@ -1,21 +1,28 @@
 const Student = require("../models/studentSchema");
+const Marks = require("../models/marksSchema");
 
-// Controller for student login
+// Student login controller
 const login = async (req, res) => {
   try {
     const { roll, dob } = req.body;
 
     // Check if the student exists
-    const student = await Student.findOne({ roll, dob });
+    const student = await Student.findOne({ roll });
     if (!student) {
-      return res.render("login", { error: "Invalid roll number or date of birth" });
+      return res.status(400).send("Invalid credentials");
     }
 
-    // Render the student result page with the student data
-    res.render("result", { student });
+    // Find the marks entry for the student
+    const marks = await Marks.findOne({ rollNumber: roll });
+    if (!marks || marks.dob !== dob) {
+      return res.status(400).send("Invalid credentials");
+    }
+
+    // Render the results page with the student and marks data
+    res.render("results", { student, marks });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).send("Server error");
   }
 };
 
