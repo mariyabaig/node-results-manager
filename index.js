@@ -5,7 +5,8 @@ const port = process.env.PORT || 4000
 const mongoose= require("mongoose")
 const session = require("express-session")
 const db = require("./db/db");
-
+const studentRouter = require("./routes/studentRoutes")
+const teacherAuth= require("./routes/teacherAuth");
 
 //app.set('views', __dirname + '/layout');
 app.set('view engine', 'ejs');
@@ -22,9 +23,13 @@ app.get('/', function(req, res)
 // });
 app.set('layout', 'layout');
 
+
 //middlewares
+
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+app.use("/student", studentRouter)
+app.use("/teacher", teacherAuth);
 
 // Session configuration
 app.use(
