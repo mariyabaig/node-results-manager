@@ -13,6 +13,10 @@ const studentSchema = new Schema({
   score: {
     type: Number,
   },
+  student: {
+    type: Schema.Types.ObjectId,
+    ref: "Student",
+  },
 });
 
 module.exports = mongoose.model("Student", studentSchema);
