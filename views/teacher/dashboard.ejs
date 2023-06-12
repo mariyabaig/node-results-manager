@@ -8,23 +8,22 @@
     <h1>Welcome to the Teacher Dashboard</h1>
     
     <!-- Button to add result -->
-    <button onclick="window.location.href='/add-result'">Add Result</button>
+    <button onclick="window.location.href='/addresult'">Add Result</button>
     
     <!-- Display added results -->
     <h2>Added Results:</h2>
-    <% if (results.length === 0) { %>
-        <p>No results added yet.</p>
-    <% } else { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Roll Number</th>
-                    <th>Date of Birth</th>
-                    <th>Name</th>
-                    <th>Total Score</th>
-                </tr>
-            </thead>
-            <tbody>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Date of Birth</th>
+                <th>Name</th>
+                <th>Total Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% try { %>
                 <% results.forEach(function(result) { %>
                     <tr>
                         <td><%= result.rollNumber %></td>
@@ -33,8 +32,12 @@
                         <td><%= result.totalScore %></td>
                     </tr>
                 <% }) %>
-            </tbody>
-        </table>
-    <% } %>
+            <% } catch (error) { %>
+                <!-- Error handling code here -->
+                <p>An error occurred while processing the results.</p>
+            <% } %>
+        </tbody> 
+    </table>
+
 </body>
 </html>
