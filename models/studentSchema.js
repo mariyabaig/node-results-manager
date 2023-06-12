@@ -13,9 +13,9 @@ const studentSchema = new Schema({
   score: {
     type: Number,
   },
-  student: {
+  marks: {
     type: Schema.Types.ObjectId,
-    ref: "Student",
+    ref: "Marks",
   },
 });
 
