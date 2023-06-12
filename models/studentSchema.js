@@ -6,13 +6,10 @@ const studentSchema = new Schema({
     type: Number,
     unique: true,
   },
-  name: { type: String },
   dob: {
     type: Date,
   },
-  score: {
-    type: Number,
-  },
+
   marks: {
     type: Schema.Types.ObjectId,
     ref: "Marks",
