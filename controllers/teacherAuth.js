@@ -20,7 +20,7 @@ const registerController = async (req, res) => {
     const teacher = new Teacher({ email, password: hashedPassword, name });
     await teacher.save();
 
-    res.redirect("/login"); // Redirect to the login page
+    res.render("teacher/login"); // Redirect to the login page
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -44,7 +44,10 @@ const loginController = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    res.redirect("/dashboard"); // Redirect to the teacher's dashboard
+    // Set up session or authentication token for the logged-in teacher
+
+    // Redirect to the teacher's dashboard upon successful login
+    res.render("teacher/dashboard", { teacher });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -53,23 +56,24 @@ const loginController = async (req, res) => {
 
 // Dashboard controller
 const dashboardController = async (req, res) => {
-    try {
-      // Assuming you have a session-based authentication system in place,
-      // you can access the authenticated teacher's information from the session
-      const { email } = req.session.teacher;
-  
-      // Find the teacher by email in the database
-      const teacher = await Teacher.findOne({ email });
-  
-      // You can pass the teacher's information to the dashboard view
-      res.render("dashboard", { teacher });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server error" });
-    }
-  };
+  try {
+    // Assuming you have a session-based authentication system in place,
+    // you can access the authenticated teacher's information from the session
+    const { email } = req.session.teacher;
+
+    // Find the teacher by email in the database
+    const teacher = await Teacher.findOne({ email });
+
+    // You can pass the teacher's information to the dashboard view
+    res.render("teacher/dashboard", { teacher });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 
 module.exports = {
   registerController,
-  loginController, dashboardController
+  loginController,
+  dashboardController,
 };
