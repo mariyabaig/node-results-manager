@@ -1,1 +1,40 @@
-<h1>Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Teacher Dashboard</h1>
+    
+    <!-- Button to add result -->
+    <button onclick="window.location.href='/add-result'">Add Result</button>
+    
+    <!-- Display added results -->
+    <h2>Added Results:</h2>
+    <% if (results.length === 0) { %>
+        <p>No results added yet.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Date of Birth</th>
+                    <th>Name</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(function(result) { %>
+                    <tr>
+                        <td><%= result.rollNumber %></td>
+                        <td><%= result.dob %></td>
+                        <td><%= result.name %></td>
+                        <td><%= result.totalScore %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>

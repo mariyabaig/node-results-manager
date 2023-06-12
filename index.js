@@ -7,6 +7,7 @@ const session = require("express-session")
 const db = require("./db/db");
 const studentRouter = require("./routes/studentRoutes")
 const teacherAuth= require("./routes/teacherAuth");
+const teacherRoutes = require("./routes/teacherRoutes");
 
 //app.set('views', __dirname + '/layout');
 app.set('view engine', 'ejs');
@@ -31,6 +32,9 @@ app.use(express.json())
 app.use("/student", studentRouter)
 app.use("/teacher", teacherAuth);
 
+
+// Set up routes
+app.use("/teacher", teacherRoutes);
 // Session configuration
 app.use(
   session({
