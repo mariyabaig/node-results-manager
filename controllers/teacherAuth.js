@@ -51,7 +51,25 @@ const loginController = async (req, res) => {
   }
 };
 
+// Dashboard controller
+const dashboardController = async (req, res) => {
+    try {
+      // Assuming you have a session-based authentication system in place,
+      // you can access the authenticated teacher's information from the session
+      const { email } = req.session.teacher;
+  
+      // Find the teacher by email in the database
+      const teacher = await Teacher.findOne({ email });
+  
+      // You can pass the teacher's information to the dashboard view
+      res.render("dashboard", { teacher });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+    }
+  };
+
 module.exports = {
   registerController,
-  loginController,
+  loginController, dashboardController
 };

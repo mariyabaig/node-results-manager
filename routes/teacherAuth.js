@@ -18,6 +18,7 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", teacherAuth.loginController);
+router.get("/dashboard", teacherAuth.dashboardController);
 
 module.exports = router;
 
