@@ -17,8 +17,12 @@ router.get("/login", (req, res) => {
   res.render("teacher/login"); // Assuming you have a "login.ejs" file in your views folder
 });
 
+router.get("/dashboard", (req, res) => {
+  res.render("teacher/dashboard"); // Assuming you have a "login.ejs" file in your views folder
+});
+
 router.post("/login", teacherAuth.loginController);
-router.get("/dashboard", teacherAuth.dashboardController);
+router.post("/dashboard", teacherAuth.dashboardController);
 
 module.exports = router;
 
