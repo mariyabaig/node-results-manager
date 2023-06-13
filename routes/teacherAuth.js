@@ -27,7 +27,9 @@ router.post("/login", teacherAuth.loginController);
 router.get("/dashboard", teacherAuth.dashboardController);
 router.post("/dashboard", teacherAuth.dashboardController);
 
-router.get("/portal");
+router.get("/portal", (req,res)=>{
+    res.render("teacher/portal")
+});
 router.post("/portal");
 
 // // router.get("/addmarks", teacherAuth.addMarksController);
