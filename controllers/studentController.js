@@ -6,20 +6,22 @@ const login = async (req, res) => {
   try {
     const { roll, dob } = req.body;
 
-    // Check if the student exists
-    const student = await Student.findOne({ roll });
-    if (!student) {
-      return res.status(400).send("Invalid credentials");
-    }
-
-    // Find the marks entry for the student
+    // Check if the roll number exists in the marks schema
     const marks = await Marks.findOne({ rollNumber: roll });
-    if (!marks || marks.dob !== dob) {
+    if (!marks) {
       return res.status(400).send("Invalid credentials");
     }
 
-    // Render the results page with the student and marks data
-    res.render("results", { student, marks });
+    // Check if the date of birth in marks schema matches the provided date of birth
+    if (!marks.dob || marks.dob.toString() !== dob) {
+      return res.status(400).send("Invalid credentials");
+    }
+
+    // Find the student entry based on the roll number
+    const student = await Student.findOne({ roll });
+
+    // Send the student and marks data as the response
+    res.status(200).json({ student, marks });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");

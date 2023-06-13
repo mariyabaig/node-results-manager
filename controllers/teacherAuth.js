@@ -1,54 +1,63 @@
-const jwt = require("jsonwebtoken");
-require('dotenv').config();
 const bcrypt = require("bcrypt");
-const Teacher = require("../models/teacherSchema");
+const jwt = require("jsonwebtoken");
+const Teacher = require("../models/TeacherSchema");
+require("dotenv").config(); // Load environment variables from .env file
+const express = require("express");
+const router = express.Router();
 
 const registerController = async (req, res) => {
   try {
-    // Code for registration...
+    const { email, password, name } = req.body;
 
-    res.render("teacher/login"); // Redirect to the login page
+    // Check if the email already exists
+    const existingTeacher = await Teacher.findOne({ email });
+    if (existingTeacher) {
+      return res.render("teacher/register", { error: "Email already registered" });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new teacher
+    const teacher = new Teacher({ email, password: hashedPassword, name });
+    await teacher.save();
+
+    res.render("teacher/register", { message: "Teacher registered successfully" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.render("teacher/register", { error: "Server error" });
   }
 };
 
 const loginController = async (req, res) => {
   try {
-    // Code for login...
+    const { email, password } = req.body;
 
-    // Generate a JWT token
-    const token = jwt.sign({ email: teacher.email, name: teacher.name }, process.env.SECRET_KEY);
-    res.json({ token });
-    // Redirect to the teacher's dashboard with the token as a query parameter
-    res.redirect(`/teacher/dashboard?token=${token}`);
-    
+    // Check if the teacher exists
+    const teacher = await Teacher.findOne({ email });
+    if (!teacher) {
+      return res.render("teacher/login", { error: "Invalid email or password" });
+    }
+
+    // Compare the password
+    const isPasswordValid = await bcrypt.compare(password, teacher.password);
+    if (!isPasswordValid) {
+      return res.render("teacher/login", { error: "Invalid email or password" });
+    }
+
+    // Create and sign the JWT token
+    const token = jwt.sign({ email: teacher.email }, process.env.SECRET_KEY, {
+      expiresIn: "1h",
+    });
+
+    res.redirect("/teacher/dashboard"); // Redirect to the teacher's dashboard page
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.render("teacher/login", { error: "Server error" });
   }
 };
 
-const dashboardController = async (req, res) => {
-  try {
-    console.log("Dashboard controller called");
-
-    const token = req.query.token;
-
-    // Verify the token
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
-
-    // Find the teacher by email in the database
-    const teacher = await Teacher.findOne({ email: decoded.email });
-    console.log("Retrieved teacher from the database:", teacher);
-    res.json({ token });
-    // You can pass the teacher's information to the dashboard view
-    res.render("teacher/dashboard", { teacher });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
-  }
+const dashboardController = (req, res) => {
+  // Handle rendering teacher's dashboard logic
+  res.render("teacher/dashboard");
 };
 
 module.exports = {
