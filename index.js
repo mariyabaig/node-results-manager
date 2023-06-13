@@ -8,21 +8,18 @@ const db = require("./db/db");
 const studentRouter = require("./routes/studentRoutes");
 const teacherAuth = require("./routes/teacherAuth");
 const teacherRoutes = require("./routes/teacherRoutes");
-const path = require("path");
 
-// Set the views directory
-app.set("views", path.join(__dirname, "views"));
-
-// Set the view engine
-app.set("view engine", "ejs");
-
-// Set up static file serving
-app.use(express.static(path.join(__dirname, "public")));
+//app.set('views', __dirname + '/layout');
+app.set('view engine', 'ejs');
 
 // Set up routes
 app.get("/", function (req, res) {
   res.render("app");
 });
+
+
+app.set('layout', 'layout');
+
 
 //middlewares
 app.use(express.urlencoded({ extended: false }));
