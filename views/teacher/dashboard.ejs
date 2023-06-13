@@ -13,17 +13,19 @@
     <!-- Display added results -->
     <h2>Added Results:</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Roll Number</th>
-                <th>Date of Birth</th>
-                <th>Name</th>
-                <th>Total Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% try { %>
+    <% if (results.length === 0) { %>
+        <p>No results added yet.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Date of Birth</th>
+                    <th>Name</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
                 <% results.forEach(function(result) { %>
                     <tr>
                         <td><%= result.rollNumber %></td>
@@ -32,12 +34,9 @@
                         <td><%= result.totalScore %></td>
                     </tr>
                 <% }) %>
-            <% } catch (error) { %>
-                <!-- Error handling code here -->
-                <p>An error occurred while processing the results.</p>
-            <% } %>
-        </tbody> 
-    </table>
+            </tbody> 
+        </table>
+    <% } %>
 
 </body>
 </html>
