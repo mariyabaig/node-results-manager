@@ -28,7 +28,7 @@ app.use("/student", studentRouter);
 app.use("/teacher", teacherAuth);
 
 // Set up routes
-app.use("/teacher", teacherRoutes);
+app.use("/teacheract", teacherRoutes);
 
 // Session configuration
 app.use(
