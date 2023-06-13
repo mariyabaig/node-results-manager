@@ -2,7 +2,7 @@ const Marks = require("../models/marksSchema");
 
 // Controller to render the add result form
 const renderAddResultForm = (req, res) => {
-  res.render("addresult");
+  res.render("teacher/addresult");
 };
 
 const addResult = async (req, res) => {
