@@ -9,25 +9,24 @@ const studentRouter = require("./routes/studentRoutes");
 const teacherAuth = require("./routes/teacherAuth");
 const teacherRoutes = require("./routes/teacherRoutes");
 
-//app.set('views', __dirname + '/layout');
+const expressLayouts = require("express-ejs-layouts");
+
 app.set('view engine', 'ejs');
+app.set('layout', 'layout');
+
+// Middleware for using express-ejs-layouts
+app.use(expressLayouts);
 
 // Set up routes
 app.get("/", function (req, res) {
   res.render("app");
 });
 
-
-app.set('layout', 'layout');
-
-
-//middlewares
+// Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/student", studentRouter);
 app.use("/teacher", teacherAuth);
-
-// Set up routes
 app.use("/teacheract", teacherRoutes);
 
 // Session configuration
