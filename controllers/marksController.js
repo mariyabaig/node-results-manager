@@ -81,6 +81,20 @@ const deleteResult = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+// Controller to fetch and render all the results
+const viewAllResults = async (req, res) => {
+  try {
+    // Fetch all the results
+    const results = await Marks.find();
+
+    res.json(results); // Return the results as JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 // Controller to render the teacher's dashboard
 const renderDashboard = async (req, res) => {
   try {
@@ -96,9 +110,10 @@ const renderDashboard = async (req, res) => {
 
 module.exports = {
   renderAddResultForm,
-   renderDashboard, 
+  renderDashboard,
   addResult,
   viewResult,
   editResult,
   deleteResult,
+  viewAllResults, // Add the new controller function
 };
