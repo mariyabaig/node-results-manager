@@ -8,13 +8,12 @@
     <h1>Welcome to the Teacher Dashboard</h1>
     
     <!-- Button to add result -->
-    <button><a href="/teacher/addresult">
-        Add Result </a></button>
+    <button><a href="/teacher/addresult">Add Result</a></button>
     
     <!-- Display added results -->
     <h2>Added Results:</h2>
-<<<<<<< HEAD
-
+    
+    <% if (marks && marks.length > 0) { %>
         <table>
             <thead>
                 <tr>
@@ -25,29 +24,18 @@
                 </tr>
             </thead>
             <tbody>
-                <% results.forEach(function(result) { %>
+                <% marks.forEach(function(mark) { %>
                     <tr>
-                        <td><%= result.rollNumber %></td>
-                        <td><%= result.dob %></td>
-                        <td><%= result.name %></td>
-                        <td><%= result.totalScore %></td>
+                        <td><%= mark.rollNumber %></td>
+                        <td><%= mark.dob %></td>
+                        <td><%= mark.name %></td>
+                        <td><%= mark.totalScore %></td>
                     </tr>
                 <% }) %>
-            </tbody> 
+            </tbody>
         </table>
-    
-
-=======
-    
-    <% if (results && results.length > 0) { %>
-        <ul>
-            <% results.forEach(function(result) { %>
-                <li>Subject: <%= result.subject %>, Marks: <%= result.marks %></li>
-            <% }); %>
-        </ul>
     <% } else { %>
         <p>No marks found yet.</p>
     <% } %>
->>>>>>> 680eed3 (dashboard template corrected)
 </body>
 </html>
