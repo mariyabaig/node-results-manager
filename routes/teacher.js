@@ -30,7 +30,7 @@ const express = require("express");
 const router = express.Router();
 const teacherAuth = require("../controllers/teacherAuth");
 const bodyParser = require("body-parser");
-const marksController = require("../controllers/marksController");
+
 
 // Parse request bodies as JSON
 router.use(bodyParser.json());

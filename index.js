@@ -7,7 +7,7 @@ const session = require("express-session");
 const db = require("./db/db");
 const studentRouter = require("./routes/studentRoutes");
 const teacher = require("./routes/teacher");
-const teacherRoutes = require("./routes/teacherRoutes");
+
 
 const expressLayouts = require("express-ejs-layouts");
 

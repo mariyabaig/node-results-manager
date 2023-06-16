@@ -163,6 +163,126 @@ const bcrypt = require("bcrypt");
 const Marks = require("../models/marksSchema");
 const Teacher = require("../models/teacherSchema");
 
+// const renderAddResultForm = (req, res) => {
+//   res.render("teacher/addresult");
+// };
+
+// const addResult = async (req, res) => {
+//   try {
+//     const { rollNumber, dob, name, totalScore } = req.body;
+
+//     const existingMarks = await Marks.findOne({ rollNumber });
+//     if (existingMarks) {
+//       return res.status(400).json({ message: "Roll number already exists" });
+//     }
+
+//     const marks = new Marks({ rollNumber, dob, name, totalScore });
+//     await marks.save();
+
+//     res.redirect("/teacher/dashboard");
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const viewResult = async (req, res) => {
+//   try {
+//     const rollNumber = req.params.rollNumber;
+//     const marks = await Marks.findOne({ rollNumber });
+//     if (!marks) {
+//       return res.status(404).json({ message: "Marks not found" });
+//     }
+//     res.json(marks);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const editResult = async (req, res) => {
+//   try {
+//     const rollNumber = req.params.rollNumber;
+//     const updates = req.body;
+//     const marks = await Marks.findOneAndUpdate({ rollNumber }, updates, {
+//       new: true,
+//     });
+//     if (!marks) {
+//       return res.status(404).json({ message: "Marks not found" });
+//     }
+//     res.json(marks);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const deleteResult = async (req, res) => {
+//   try {
+//     const rollNumber = req.params.rollNumber;
+//     const marks = await Marks.findOneAndDelete({ rollNumber });
+//     if (!marks) {
+//       return res.status(404).json({ message: "Marks not found" });
+//     }
+//     res.json({ message: "Marks deleted successfully" });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const viewAllResults = async (req, res) => {
+//   try {
+//     const results = await Marks.find();
+//     res.render("teacher/dashboard", { results: results });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const renderDashboard = async (req, res) => {
+//   try {
+//     const results = await Marks.find();
+//     res.render("teacher/dashboard", { results: results });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+// const registerController = async (req, res) => {
+//   try {
+//     const { email, password, name } = req.body;
+//     const existingTeacher = await Teacher.findOne({ email });
+//     if (existingTeacher) {
+//       return res.render("teacher/register", { error: "Email already registered" });
+//     }
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const teacher = new Teacher({ email, password: hashedPassword, name });
+//     await teacher.save();
+//     res.render("teacher/login");
+//   } catch (error) {
+//     res.render("teacher/register", { error: "Server error" });
+//   }
+// };
+
+// const loginController = async (req, res) => {
+//   try {
+//     const teacher = await Teacher.findOne({ email: req.body.email });
+//     if (!teacher) {
+//       return res.render("teacher/login", { error: "Invalid email or password" });
+//     }
+//     const isPasswordValid = await bcrypt.compare(req.body.password, teacher.password);
+//     if (!isPasswordValid) {
+//       return res.render("teacher/login", { error: "Invalid email or password" });
+//     }
+//     res.redirect("/teacher/dashboard");
+//   } catch (error) {
+//     console.error(error);
+//     res.render("teacher/login", { error: "An error occurred during login" });
+//   }
+// };
 const renderAddResultForm = (req, res) => {
   res.render("teacher/addresult");
 };
@@ -193,7 +313,7 @@ const viewResult = async (req, res) => {
     if (!marks) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.json(marks);
+    res.render("teacher/viewresult", { marks: marks });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -210,7 +330,7 @@ const editResult = async (req, res) => {
     if (!marks) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.json(marks);
+    res.redirect("/teacher/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -224,7 +344,7 @@ const deleteResult = async (req, res) => {
     if (!marks) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.json({ message: "Marks deleted successfully" });
+    res.redirect("/teacher/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -283,6 +403,7 @@ const loginController = async (req, res) => {
     res.render("teacher/login", { error: "An error occurred during login" });
   }
 };
+
 
 module.exports = {
   renderAddResultForm,
