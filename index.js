@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/student", studentRouter);
 app.use("/teacher", teacher);
-app.use("/allresults", teacherRoutes);
+// app.use("/allresults", teacherRoutes);
 
 // Session configuration
 
