@@ -1,41 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Teacher Dashboard</title>
-</head>
-<body>
-    <h1>Welcome to the Teacher Dashboard</h1>
-    
-    <!-- Button to add result -->
-    <button><a href="/teacher/addresult">Add Result</a></button>
-    
-    <!-- Display added results -->
-    <h2>Added Results:</h2>
-    
-    <% if (marks && marks.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Roll Number</th>
-                    <th>Date of Birth</th>
-                    <th>Name</th>
-                    <th>Total Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% marks.forEach(function(mark) { %>
-                    <tr>
-                        <td><%= mark.rollNumber %></td>
-                        <td><%= mark.dob %></td>
-                        <td><%= mark.name %></td>
-                        <td><%= mark.totalScore %></td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <p>No marks found yet.</p>
-    <% } %>
-</body>
-</html>
+<!-- views/teacher/dashboard.ejs -->
+
+<h1>Teacher Dashboard</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Roll Number</th>
+      <th>Date of Birth</th>
+      <th>Name</th>
+      <th>Total Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% results.forEach((result) => { %>
+    <tr>
+      <td><%= result.rollNumber %></td>
+      <td><%= result.dob %></td>
+      <td><%= result.name %></td>
+      <td><%= result.totalScore %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
