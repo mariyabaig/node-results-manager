@@ -19,7 +19,7 @@ const login = async (req, res) => {
 
     // Find the student entry based on the roll number
     const student = await Student.findOne({ roll });
-
+res.redirect("/result")
     // Send the student and marks data as the response
     res.status(200).json({ student, marks });
   } catch (error) {

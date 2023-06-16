@@ -8,5 +8,9 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", studentController.login);
+router.get("/result", (req, res) => {
+  res.render("student/result");
+});
+
 
 module.exports = router;
