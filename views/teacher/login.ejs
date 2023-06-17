@@ -2,21 +2,70 @@
 <html>
 <head>
   <title>Teacher Login</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 40px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    button[type="submit"] {
+      background-color: #187fde;
+      color: #ffffff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="bg-white shadow-lg rounded-lg p-6">
-    <h1 class="text-2xl font-bold mb-6">Login</h1>
+<body>
+  <div class="container">
+    <h1>Login</h1>
     <form method="POST" action="/teacher/login">
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-semibold">Email:</label>
-        <input type="email" id="email" name="email" required class="border border-gray-300 rounded-lg px-3 py-2 w-full">
-      </div>
-      <div class="mb-4">
-        <label for="password" class="block text-gray-700 font-semibold">Password:</label>
-        <input type="password" id="password" name="password" required class="border border-gray-300 rounded-lg px-3 py-2 w-full">
-      </div>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">
-        Login
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">
+        <a href="/teacher/dashboard">Login</a>
       </button>
     </form>
   </div>
