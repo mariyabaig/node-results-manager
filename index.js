@@ -20,9 +20,6 @@ app.use(expressLayouts);
 // Set up routes
 app.get("/", function (req, res) {
   res.render("app");
- 
-    // Your code logic for the GET request
-    res.send('Hello, this is the teacher route!');
   
 });
 
