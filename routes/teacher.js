@@ -40,7 +40,7 @@ router.get("/edit/:rollNumber", teacherAuth.getEdit);
 router.post("/edit/:rollNumber", teacherAuth.editResult);
 
 // Route to delete a specific result
-router.delete("/delete/:rollNumber", teacherAuth.deleteResult);
+router.get("/delete/:rollNumber", teacherAuth.deleteResult);
 
 // Route to render the teacher's dashboard
 router.get("/dashboard", teacherAuth.renderDashboard);

@@ -14,9 +14,9 @@
         <p>Name: <%= result.name %></p>
         <p>Total Score: <%= result.totalScore %></p>
         <button><a href="/teacher/edit/<%= result.rollNumber %>">Edit</a></button>
-        <form action="/teacher/delete/<%= result.rollNumber %>" method="POST" style="display: inline;">
-          <button type="submit">Delete</button>
-        </form>
+        
+        <button><a href="/teacher/delete/<%= result.rollNumber %>">Delete</a></button>
+        
       </div>
       <hr>
     <% }) %>
