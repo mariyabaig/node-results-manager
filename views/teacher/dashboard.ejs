@@ -2,6 +2,39 @@
 <html>
 <head>
   <title>Teacher Dashboard</title>
+</head>
+<body>
+  <h1 class="text-2xl font-bold">Teacher Dashboard</h1>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <a href="/teacher/addresult">Add Result</a>
+  </button>
+  <% if (results && results.length > 0) { %>
+    <% results.forEach((result) => { %>
+      <div class="mt-4 border border-gray-300 p-4 rounded">
+        <!-- Display result information -->
+        <p class="mb-2"><strong>Roll Number:</strong> <%= result.rollNumber %></p>
+        <p class="mb-2"><strong>Date of Birth:</strong> <%= result.dob %></p>
+        <p class="mb-2"><strong>Name:</strong> <%= result.name %></p>
+        <p class="mb-2"><strong>Total Score:</strong> <%= result.totalScore %></p>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          <a href="/teacher/edit/<%= result.rollNumber %>">Edit</a>
+        </button>
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <a href="/teacher/delete/<%= result.rollNumber %>">Delete</a>
+        </button>
+      </div>
+      <hr class="my-4">
+    <% }) %>
+  <% } else { %>
+    <p>No results found</p>
+  <% } %>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Dashboard</title>
   <button><a href="/teacher/addresult">Add Result</a></button>
 </head>
 <body>
@@ -9,7 +42,7 @@
   <% if (results && results.length > 0) { %>
     <% results.forEach((result) => { %>
       <div>
-        <!-- Display result information -->
+       
         <p>Roll Number: <%= result.rollNumber %></p>
         <p>Date of Birth: <%= result.dob %></p>
         <p>Name: <%= result.name %></p>
@@ -25,4 +58,4 @@
     <p>No results found</p>
   <% } %>
 </body>
-</html>
+</html> -->

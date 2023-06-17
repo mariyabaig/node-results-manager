@@ -1,14 +1,14 @@
 <%- include("partials/navbar"); -%>
-<title>Result Management</title>
-<p class="text">Login as</p>
-<div class="teachLog">
-  <button type="button" class="btn">
-    <a href="/teacher/portal">Teacher</a>
-  </button>
-  <!-- <h1>Don't have an account yet?</h1>
-  <button type="button" class="btn">Register here</button> -->
 
-  <button type="button" class="btn">
-    <a href="/student/login">Student</a>
-  </button>
+<title>Result Management</title>
+<div class="bg-bg text-2xl h-screen flex flex-col items-center justify-center">
+  <p class="font-bold">Login as</p>
+  <div class="flex flex-row my-5 text-bg">
+    <button type="button" class="bg-lightblue p-4 rounded-2xl mx-2">
+      <a href="/teacher/portal" class="btn-link">Teacher</a>
+    </button>
+    <button type="button" class="bg-lightblue p-4 rounded-2xl mx-2">
+      <a href="/student/login" class="btn-link">Student</a>
+    </button>
+  </div>
 </div>
