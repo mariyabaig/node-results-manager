@@ -313,7 +313,7 @@ const viewResult = async (req, res) => {
     if (!marks) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.render("teacher/viewresult", { marks: marks });
+    res.render("teacher/dashboard", { marks: marks });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -324,13 +324,13 @@ const editResult = async (req, res) => {
   try {
     const rollNumber = req.params.rollNumber;
     const updates = req.body;
-    const marks = await Marks.findOneAndUpdate({ rollNumber }, updates, {
+    const results = await Marks.findOneAndUpdate({ rollNumber }, updates, {
       new: true,
     });
-    if (!marks) {
+    if (!results) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.redirect("/teacher/dashboard");
+    res.render("teacher/edit",{ rollNumber, results : results })
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
