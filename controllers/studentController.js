@@ -1,7 +1,8 @@
-const Student = require("../models/studentSchema");
-const Marks = require("../models/marksSchema");
+// Assuming the necessary modules and models are imported
 
 // Student login controller
+const Marks = require("../models/marksSchema");
+const Student= require ("../models/studentSchema")
 const login = async (req, res) => {
   try {
     const { roll, dob } = req.body;
@@ -19,9 +20,20 @@ const login = async (req, res) => {
 
     // Find the student entry based on the roll number
     const student = await Student.findOne({ roll });
-res.redirect("/result")
-    // Send the student and marks data as the response
-    res.status(200).json({ student, marks });
+    if (!student) {
+      return res.status(400).send("Invalid credentials");
+    }
+
+    // Get the details of the logged-in roll number
+    const rollNumberDetails = {
+      roll: student.roll,
+      name: student.name,
+      totalScore: marks.totalScore
+    };
+
+    // Render the "result" template and pass the roll number details as data
+    res.render("teacher/result", { rollNumberDetails });
+    console.log(rollNumberDetails)
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
