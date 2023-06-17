@@ -1,1 +1,30 @@
-<h1>Result</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roll Number Details</title>
+  <style>
+    /* Add some basic styling for demonstration purposes */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .details {
+      margin-top: 20px;
+    }
+    .details p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roll Number Details</h1>
+  <div class="details">
+    <p><strong>Roll Number:</strong> <%= rollNumberDetails.roll %></p>
+    <p><strong>Name:</strong> <%= rollNumberDetails.name %></p>
+    <p><strong>Total Score:</strong> <%= rollNumberDetails.totalScore %></p>
+  </div>
+</body>
+</html>
