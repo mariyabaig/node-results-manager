@@ -320,6 +320,46 @@ const viewResult = async (req, res) => {
   }
 };
 
+// const getEdit  = async (req, res) => {
+//   const rollNumber = req.params.rollNumber;
+//   const results = await Marks.findById({ rollNumber })
+//   res.render("teacher/edit", {rollNumber, results : results })
+// };
+
+// const editResult = async (req, res) => {
+//   try {
+//     const rollNumber = req.params.rollNumber;
+//     const updates = req.body;
+//     const results = await Marks.findOneAndUpdate({ rollNumber }, updates, {
+//       new: true,
+//     });
+//     res.redirect("/teacher/dashboard")
+//     if (!results) {
+//       return res.status(404).json({ message: "Marks not found" });
+//     }
+
+//     // res.render("teacher/edit",{ rollNumber, results : results })
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+const getEdit = async (req, res) => {
+  try {
+    const rollNumber = req.params.rollNumber;
+    const result = await Marks.findOne({ rollNumber: rollNumber }).exec();
+    if (!result) {
+      return res.status(404).json({ message: "Marks not found" });
+    }
+    res.render("teacher/edit", { rollNumber, results: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
 const editResult = async (req, res) => {
   try {
     const rollNumber = req.params.rollNumber;
@@ -327,10 +367,10 @@ const editResult = async (req, res) => {
     const results = await Marks.findOneAndUpdate({ rollNumber }, updates, {
       new: true,
     });
-    if (!results) {
-      return res.status(404).json({ message: "Marks not found" });
-    }
-    res.render("teacher/edit",{ rollNumber, results : results })
+    // if (!results) {
+    //   return res.status(404).json({ message: "Marks not found" });
+    // }
+    res.redirect("/teacher/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -415,4 +455,5 @@ module.exports = {
   renderDashboard,
   registerController,
   loginController,
+  getEdit
 };

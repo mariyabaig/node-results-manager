@@ -36,8 +36,8 @@ router.get("/result/:rollNumber", teacherAuth.viewResult);
 // router.get("/edit/:rollNumber", teacherAuth.editResult, (req,res)=>{
 //   res.render("teacher/edit")
 // })
-router.get("/edit/:rollNumber", teacherAuth.editResult);
-router.put("/edit/:rollNumber", teacherAuth.editResult);
+router.get("/edit/:rollNumber", teacherAuth.getEdit);
+router.post("/edit/:rollNumber", teacherAuth.editResult);
 
 // Route to delete a specific result
 router.delete("/delete/:rollNumber", teacherAuth.deleteResult);
