@@ -24,7 +24,7 @@ router.post("/portal", (req, res) => {
 });
 
 // Route to render the add result form
-router.get("/addresult", teacherAuth.addResult);
+router.get("/addresult", teacherAuth.renderAddResultForm);
 
 // Route to handle adding a result
 router.post("/addresult", teacherAuth.addResult);
