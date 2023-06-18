@@ -44,3 +44,7 @@ app.use(
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+app.use((req, res) => {
+  res.status(404).render('404', { title: 'Page not found' });
+});
