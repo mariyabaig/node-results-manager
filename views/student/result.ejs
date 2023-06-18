@@ -5,7 +5,7 @@
     <div class="max-w-sm bg-white shadow-md rounded-md p-4 mx-auto">
       <p><strong class="font-bold">Roll Number:</strong> <%= rollNumberDetails.roll %></p>
       <p><strong class="font-bold">Name:</strong> <%= rollNumberDetails.name %></p>
-      <p><strong class="font-bold">Date of Birth:</strong> <%= rollNumberDetails.dob %>
+      <p><strong class="font-bold">Date of Birth:</strong> <%= rollNumberDetails.dob.getDate().toString().padStart(2, '0') %> <%= rollNumberDetails.dob.toLocaleString('default', { month: 'short' }) %> <%= rollNumberDetails.dob.getFullYear().toString() %>
       </p>
       <p><strong class="font-bold">Total Score:</strong> <%= rollNumberDetails.totalScore %></p>
       
