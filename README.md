@@ -30,7 +30,7 @@ Before running the application, you need to set up the configuration by creating
 
 ``` PORT=YOUR_PORT_NUMBER OR 3000 ```
 ```  DB="YOUR_DB_URL"```
-``` SECRET_SECRET="YOUR_SESSIONSECRET" ```
+``` SESSION_SECRET="YOUR_SESSIONSECRET" ```
 
 
 Replace the values with your desired configuration. The `PORT` variable specifies the port on which the application will run. The `DB` variable represents the database connection string, and the `SECRET_SECRET` variable is used for session encryption.
