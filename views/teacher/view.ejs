@@ -10,9 +10,10 @@
       <p><strong class="font-bold">Date of Birth:</strong> <%= marks.dob.getDate().toString().padStart(2, '0') %> <%= marks.dob.toLocaleString('default', { month: 'short' }) %> <%= marks.dob.getFullYear().toString() %>
       </p>
       <p><strong class="font-bold">Total Score:</strong> <%= marks.totalScore %></p>
-      <a href="/student/dashboard" class="mt-4 font-bold underline text-blue-500 hover:text-blue-600">
+      <a href="/teacher/dashboard" class="mt-4 font-bold underline text-blue-500 hover:text-blue-600">
         Back
       </a>
+     
     </div>
     
   </body>
