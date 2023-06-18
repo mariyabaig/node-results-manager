@@ -415,6 +415,9 @@ const registerController = async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const existingTeacher = await Teacher.findOne({ email });
+    if (password !== confirmPassword) {
+      return res.render("teacher/register", { error: "Passwords do not match" });
+    }
     if (existingTeacher) {
       return res.render("teacher/register", { error: "Email already registered" });
     }
