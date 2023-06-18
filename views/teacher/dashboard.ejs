@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Teacher Dashboard</title>
-</head>
-<body>
-  <h1 class="text-2xl font-bold">Teacher Dashboard</h1>
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+
+<body class="m-8">
+  <span class="flex flex-row justify-between items-center">
+    <h1 class="text-2xl font-bold">Teacher's Dashboard</h1>   
+  <a href="/teacher/portal" class="mt-4 font-bold underline text-blue-500 hover:text-blue-600">
+    Logout
+  </a>
+
+  </span>
+  
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">
     <a href="/teacher/addresult">Add Result</a>
   </button>
-  <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded mt-4">
-    <a href="/teacher/portal">Logout</a></button>
+
 
   <% if (results && results.length > 0) { %>
     <% results.forEach((result) => { %>
@@ -31,8 +33,9 @@
   <% } else { %>
     <p>No results found</p>
   <% } %>
+ 
 </body>
-</html>
+
 
 <!-- <!DOCTYPE html>
 <html>

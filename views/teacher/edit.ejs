@@ -1,41 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Edit Result</title>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded mt-4">
-    <a href="/teacher/dashboard">Logout</a></button>
-  <div class="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold mb-6">Edit Result</h1>
-    <!-- Edit result form -->
-    <form action="/teacher/edit/<%= results.rollNumber %>" method="POST">
-      <!-- Roll number input -->
-      <div class="mb-4">
-        <label for="rollNumber" class="block font-bold">Roll Number:</label>
-        <input type="text" id="rollNumber" name="rollNumber" value="<%= results.rollNumber %>" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-      </div>
+  <head>
+    <title>Edit Result</title>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <span class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold mb-6">Edit Result</h1>
+        <a
+          href="/teacher/dashboard"
+          class="mt-4 font-bold underline text-blue-500 hover:text-blue-600"
+        >
+          Logout
+        </a>
+      </span>
+      <!-- Edit result form -->
+      <form action="/teacher/edit/<%= results.rollNumber %>" method="POST">
+        <!-- Roll number input -->
+        <div class="mb-4">
+          <label for="rollNumber" class="block font-bold">Roll Number:</label>
+          <input
+            type="text"
+            id="rollNumber"
+            name="rollNumber"
+            value="<%= results.rollNumber %>"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+          />
+        </div>
 
-      <!-- Date of birth input -->
-      <div class="mb-4">
-        <label for="dob" class="block font-bold">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" value="<%= results.dob %>" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-      </div>
+        <!-- Date of birth input -->
+        <div class="mb-4">
+          <label for="dob" class="block font-bold">Date of Birth:</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            value="<%= results.dob %>"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+          />
+        </div>
 
-      <!-- Name input -->
-      <div class="mb-4">
-        <label for="name" class="block font-bold">Name:</label>
-        <input type="text" id="name" name="name" value="<%= results.name %>" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-      </div>
+        <!-- Name input -->
+        <div class="mb-4">
+          <label for="name" class="block font-bold">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="<%= results.name %>"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+          />
+        </div>
 
-      <!-- Total score input -->
-      <div class="mb-6">
-        <label for="totalScore" class="block font-bold">Total Score:</label>
-        <input type="number" id="totalScore" name="totalScore" value="<%= results.totalScore %>" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-      </div>
+        <!-- Total score input -->
+        <div class="mb-6">
+          <label for="totalScore" class="block font-bold">Total Score:</label>
+          <input
+            type="number"
+            id="totalScore"
+            name="totalScore"
+            value="<%= results.totalScore %>"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+          />
+        </div>
 
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update Result</button>
-    </form>
-  </div>
-</body>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          Update Result
+        </button>
+      </form>
+    </div>
+  </body>
 </html>

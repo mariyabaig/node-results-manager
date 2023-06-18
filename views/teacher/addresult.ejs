@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Add Result</title>
-  <!-- Add the link to the compiled Tailwind CSS file -->
-  
-</head>
-    <button type="submit" class=" bg-blue-500 text-white py-2 px-4 rounded mt-4">
-      <a href="/teacher/dashboard">Back</a></button>
+
+
 <body class="bg-gray-100 flex items-center justify-center h-screen">
-  <h1 class="text-2xl font-bold mb-4">Add Result</h1>
+ 
   <!-- Add result form -->
   <form action="/teacher/addresult" method="POST" class="max-w-sm bg-white shadow-md rounded-md p-4">
+    <span class="flex justify-between items-center">
+      <h1 class="text-2xl font-bold mb-4 flex flex-col">Add Result</h1>
+      <a href="/teacher/dashboard" class="mt-4 font-bold underline text-blue-500 hover:text-blue-600">
+        Back
+      </a>
+    </span>
+   
     <!-- Roll number input -->
     <label for="rollNumber" class="mb-2">Roll Number:</label>
     <input type="text" id="rollNumber" name="rollNumber" required class="w-full px-2 py-1 border border-gray-300 rounded mb-2">
@@ -28,11 +28,11 @@
     <input type="number" id="totalScore" name="totalScore" required class="w-full px-2 py-1 border border-gray-300 rounded mb-2">
 
     <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded mt-4">
-      Add Result
+      Submit Result
     </button>
   </form>
 </body>
-</html>
+
 
 <!-- <!DOCTYPE html>
 <html>
