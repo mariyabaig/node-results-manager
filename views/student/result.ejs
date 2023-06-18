@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Roll Number Details</title>
-
-</head>
-<!-- <body>
-  <h1>Roll Number Details</h1>
-  <div class="details">
-    <p><strong>Roll Number:</strong> <%= rollNumberDetails.roll %></p>
-    <p><strong>Name:</strong> <%= rollNumberDetails.name %></p>
-    <p><strong>Total Score:</strong> <%= rollNumberDetails.totalScore %></p>
-  </div>
-</body> -->
-<body class="bg-bg">
+<!-- 
+<body class="bg-bg mt-12">
     <h1 class="text-2xl font-bold mb-4">Roll Number Details</h1>
+    <h1 class="text-xl font-bold flex justify-center my-5">Welcome, <%= rollNumberDetails.name %></h1>
     <div class="max-w-sm bg-white shadow-md rounded-md p-4 mx-auto">
       <p><strong class="font-bold">Roll Number:</strong> <%= rollNumberDetails.roll %></p>
       <p><strong class="font-bold">Name:</strong> <%= rollNumberDetails.name %></p>
+      <p><strong class="font-bold">Date of Birth:</strong> <%= rollNumberDetails.dob.getDate().toString().padStart(2, '0') %> <%= rollNumberDetails.dob.toLocaleString('default', { month: 'short' }) %> <%= rollNumberDetails.dob.getFullYear().toString() %>
+      </p>
+      <p><strong class="font-bold">Total Score:</strong> <%= rollNumberDetails.totalScore %></p>
+      
+    </div>
+  </body> -->
+  <body class="bg-bg mt-12">
+    <h1 class="text-2xl font-bold mb-4">Roll Number Details</h1>
+    <h1 class="text-xl font-bold flex justify-center my-5">Welcome, <%= rollNumberDetails.name %></h1>
+    <div class="max-w-sm bg-white shadow-md rounded-md p-4 mx-auto">
+      <div class="flex items-center justify-center">
+        <img class="rounded-full w-20 h-20 mb-4" src="<%= `https://www.gravatar.com/avatar/${Math.floor(Math.random() * 1000)}?s=200&d=identicon` %>" alt="Avatar" />
+      </div>
+      <p><strong class="font-bold">Roll Number:</strong> <%= rollNumberDetails.roll %></p>
+      <p><strong class="font-bold">Name:</strong> <%= rollNumberDetails.name %></p>
+      <p><strong class="font-bold">Date of Birth:</strong> <%= rollNumberDetails.dob.getDate().toString().padStart(2, '0') %> <%= rollNumberDetails.dob.toLocaleString('default', { month: 'short' }) %> <%= rollNumberDetails.dob.getFullYear().toString() %>
+      </p>
       <p><strong class="font-bold">Total Score:</strong> <%= rollNumberDetails.totalScore %></p>
     </div>
   </body>
-</html>
+  
