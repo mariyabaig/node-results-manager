@@ -19,6 +19,7 @@ router.post("/login", teacherAuth.loginController);
 router.get("/portal", (req, res) => {
   res.render("teacher/portal");
 });
+
 router.post("/portal", (req, res) => {
   // Handle the POST request for "/portal" here
 });
@@ -48,4 +49,6 @@ router.get("/dashboard", teacherAuth.renderDashboard);
 // Route to view all the results
 router.get("/results", teacherAuth.viewAllResults);
 
+router.get('/view/:rollNumber', teacherAuth.viewResult);
+router.post('/view/:rollNumber', teacherAuth.viewResult);
 module.exports = router;

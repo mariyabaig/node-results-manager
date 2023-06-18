@@ -313,7 +313,7 @@ const viewResult = async (req, res) => {
     if (!marks) {
       return res.status(404).json({ message: "Marks not found" });
     }
-    res.render("teacher/dashboard", { marks: marks });
+    res.render("teacher/view", { marks: marks });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
